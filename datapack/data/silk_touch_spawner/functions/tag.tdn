@@ -1,0 +1,33 @@
+@on compile
+@priority 0
+
+
+#Dependencies
+
+define function second {
+    global var f_second = resource</>
+    
+    schedule function / 1s replace
+}
+
+define function tick {
+    @tag tick
+    
+}
+
+define function init {
+    @tag load
+    
+    
+    #scoreboard objectives add enterMsg.leave minecraft.custom:minecraft.leave_game {"text":"Enter Message Trigger"}
+    #scoreboard objectives add enterMsg.age.s dummy {"text":"Enter Message Age(s)"}
+    
+    #schedule function $f_second 1s replace
+    tellraw @a ["",{"text":"> ","color":"gray"},{"text":"[Silk Touch Spawner]","color":"gray"},{"text":"[1.0.0]","color":"dark_gray"},{"text":" module loaded.","color":"gray"}]    
+    
+}
+
+
+define function uninstall {
+    #scoreboard objectives remove enterMsg.leave
+}

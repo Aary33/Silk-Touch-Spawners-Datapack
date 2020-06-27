@@ -1,0 +1,40 @@
+@on compile
+@priority 1
+
+#Config
+
+#Dependencies
+
+#Initialize objectives
+
+#Items
+#
+#
+
+define item itm_spawner minecraft:spawner {
+    default name { "text" : "Empty Spawner", "color" : "white", "italic" : false}
+
+    default lore [
+            [
+                {"text" : "A soul-less prison.",
+                    "color" : "dark_purple",
+                    "italic" : false
+                }]
+            ]
+
+    default nbt {
+        BlockEntityTag: {
+            SpawnPotentials: [{
+                    Entity: {id:"minecraft:zombie"}, Weight:1}
+            ],
+            SpawnData: {id:"minecraft:zombie"}
+        }
+
+    }
+
+
+}
+
+#Functions
+#
+#

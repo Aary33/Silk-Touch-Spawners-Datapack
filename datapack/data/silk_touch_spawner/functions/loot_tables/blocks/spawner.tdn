@@ -1,0 +1,35 @@
+@on compile
+var str_spawner_name = itm_spawner.baseType
+var str_spawner_tag = JSON.stringify(nbt<${itm_spawner.getItemTag()}>.toDictionary(), false)
+
+eval File.out.writeData(
+    "data/minecraft/loot_tables/blocks/spawner.json" ,
+    JSON.stringify(
+        {
+            "type":"minecraft:block",
+            "pools":[
+                {
+                    "rolls":1,
+                    "entries":[
+                        {
+                            "type":"minecraft:item",
+                            "name": str_spawner_name,
+                            "functions": [
+                                {
+                                    "function":"set_nbt",
+                                    "tag": str_spawner_tag
+                                }   
+                            ]
+                        }
+                    ],
+                    "conditions":[
+                        {
+                        "condition":"minecraft:survives_explosion"
+                        }
+                    ]
+                }
+            ]
+        },
+        true
+    )
+)
